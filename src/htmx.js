@@ -3553,7 +3553,8 @@ var htmx = (function() {
       'HX-Trigger': getRawAttribute(elt, 'id'),
       'HX-Trigger-Name': getRawAttribute(elt, 'name'),
       'HX-Target': getAttributeValue(target, 'id'),
-      'HX-Current-URL': getDocument().location.href
+      'HX-Current-URL': getDocument().location.href,
+      'HX-Swap': getAttributeValue(elt, 'hx-swap') || htmx.config.defaultSwapStyle
     }
     getValuesForElement(elt, 'hx-headers', false, headers)
     if (prompt !== undefined) {

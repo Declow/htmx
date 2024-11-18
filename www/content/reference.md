@@ -101,6 +101,7 @@ All other attributes available in htmx.
 | `HX-Target` | the `id` of the target element if it exists
 | `HX-Trigger-Name` | the `name` of the triggered element if it exists
 | `HX-Trigger` | the `id` of the triggered element if it exists
+| `HX-Swap` | the swap value of the triggered element. Will use the `htmx.config.defaultSwapStyle` if none is present.
 
 </div>
 

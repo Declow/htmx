@@ -49,6 +49,26 @@ describe('Core htmx AJAX headers', function() {
     this.server.respond()
   })
 
+  it('should include the HX-Swap header', function() {
+    this.server.respondWith('GET', '/test', function(xhr) {
+      xhr.requestHeaders['HX-Swap'].should.equal('innerHTML')
+      xhr.respond(200, {}, '')
+    })
+    var div = make('<div id="d1" hx-get="/test"></div>')
+    div.click()
+    this.server.respond()
+  })
+
+  it('should include the HX-Swap header override', function() {
+    this.server.respondWith('GET', '/test', function(xhr) {
+      xhr.requestHeaders['HX-Swap'].should.equal('outerHTML')
+      xhr.respond(200, {}, '')
+    })
+    var div = make('<div id="d1" hx-get="/test" hx-swap="outerHTML"></div>')
+    div.click()
+    this.server.respond()
+  })
+
   it('should handle simple string HX-Trigger response header properly', function() {
     this.server.respondWith('GET', '/test', [200, { 'HX-Trigger': 'foo' }, ''])
 
