@@ -69,7 +69,7 @@ describe('Core htmx AJAX headers', function() {
     this.server.respond()
   })
 
-  it('should include the HX-Swap header only attributes', function() {
+  it('should include the HX-Swap header without modifiers', function() {
     this.server.respondWith('GET', '/test', function(xhr) {
       xhr.requestHeaders['HX-Swap'].should.equal('outerHTML')
       xhr.respond(200, {}, '')
